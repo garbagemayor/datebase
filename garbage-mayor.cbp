@@ -27,7 +27,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-				</Linker>
+				</Linker> 
 			</Target>
 		</Build>
 		<Compiler>
