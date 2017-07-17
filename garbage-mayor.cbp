@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="garbage-mayor" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/garbage-mayor" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="GarbageMayor" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/garbage-mayor" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="GarbageMayor" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="GarbageMayor.h" />
+		<Unit filename="GarbageMayor/Const.h" />
+		<Unit filename="GarbageMayor/DataType.h" />
+		<Unit filename="GarbageMayor/DataTypeBase.cpp" />
+		<Unit filename="GarbageMayor/DataTypeBase.h" />
+		<Unit filename="GarbageMayor/DataTypeBinary.h" />
+		<Unit filename="GarbageMayor/DataTypeFloat.cpp" />
+		<Unit filename="GarbageMayor/DataTypeFloat.h" />
+		<Unit filename="GarbageMayor/DataTypeInt.cpp" />
+		<Unit filename="GarbageMayor/DataTypeInt.h" />
+		<Unit filename="GarbageMayor/DataTypeText.h" />
+		<Unit filename="GarbageMayor/DataTypeTime.h" />
+		<Unit filename="GarbageMayor/Table.cpp" />
+		<Unit filename="GarbageMayor/Table.h" />
+		<Extensions>
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project output_language="" />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
