@@ -1,6 +1,0 @@
-#ifndef DATATYPEBINARY_H_
-#define DATATYPEBINARY_H_
-
-
-
-#endif // DATATYPEBINARY_H_
