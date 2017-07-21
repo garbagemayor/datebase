@@ -3,7 +3,7 @@
 	<assert.h>
 	"DataTypeBase.h"
 
-1500219733 f:\en_path\database\garbage-mayor\garbagemayor\datatypebase.h
+1500650340 f:\en_path\database\garbage-mayor\garbagemayor\datatypebase.h
 
 1500216650 source:f:\en_path\database\garbage-mayor\garbagemayor\datatypeint.cpp
 	<cstdio>
@@ -11,7 +11,7 @@
 	"Const.h"
 	"DataTypeInt.h"
 
-1500209029 f:\en_path\database\garbage-mayor\garbagemayor\datatypeint.h
+1500302690 f:\en_path\database\garbage-mayor\garbagemayor\datatypeint.h
 	"DataTypeBase.h"
 
 1500219917 f:\en_path\database\garbage-mayor\garbagemayor\const.h
@@ -24,4 +24,13 @@
 
 1500220338 f:\en_path\database\garbage-mayor\garbagemayor\datatypefloat.h
 	"DataTypeBase.h"
+
+1500651854 source:f:\en_path\database\garbage-mayor\garbagemayor\datatypetime.cpp
+	<cstdio>
+	<assert.h>
+	"DataTypeTime.h"
+
+1500651345 f:\en_path\database\garbage-mayor\garbagemayor\datatypetime.h
+	"DataTypeBase.h"
+	"DataTypeInt.h"
 

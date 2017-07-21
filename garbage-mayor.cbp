@@ -27,7 +27,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-				</Linker> 
+				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
@@ -44,6 +44,7 @@
 		<Unit filename="GarbageMayor/DataTypeInt.cpp" />
 		<Unit filename="GarbageMayor/DataTypeInt.h" />
 		<Unit filename="GarbageMayor/DataTypeText.h" />
+		<Unit filename="GarbageMayor/DataTypeTime.cpp" />
 		<Unit filename="GarbageMayor/DataTypeTime.h" />
 		<Unit filename="GarbageMayor/Table.cpp" />
 		<Unit filename="GarbageMayor/Table.h" />

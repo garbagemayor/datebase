@@ -23,7 +23,7 @@ namespace GarbageMayor
         dt_timed,       //年月日yyyymmdd
         dt_times,       //时分秒hhmmss
         dt_timeds,      //年月日时分秒yyyymmddhhmmss
-        dt_timedsu,     //年月日时分秒微yyyymmddhhmmssuuu
+        dt_timedsu,     //年月日时分秒毫微yyyymmddhhmmssmmmuuu
         
         dt_textc2f,     //定长文本，长度不超过255字节
         dt_textc4f,     //定长文本，长度不超过65535字节
