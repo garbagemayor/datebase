@@ -145,7 +145,7 @@ namespace GarbageMayor
     每8位压缩在一个int里面。
     最多256*8=2048位。
     */
-    class DTintbig
+    class DTinthp
         : public DTbase
     {
     private:
@@ -155,10 +155,10 @@ namespace GarbageMayor
         int * digit;    //每8个十进制位
         
     public:
-        DTintbig();
-        DTintbig(const char * vs);
-        DTintbig(const DTintbig & dt);
-        ~DTintbig();
+        DTinthp();
+        DTinthp(const char * vs, int dlen_ = -1);
+        DTinthp(const DTinthp & dt);
+        ~DTinthp();
     
     public:
         void read();
@@ -166,12 +166,12 @@ namespace GarbageMayor
         int get_size() const;
         
     public:
-        bool operator == (const DTintbig & dt) const;
-        bool operator != (const DTintbig & dt) const;
-        bool operator < (const DTintbig & dt) const;
-        bool operator <= (const DTintbig & dt) const;
-        bool operator > (const DTintbig & dt) const;
-        bool operator >= (const DTintbig & dt) const;
+        bool operator == (const DTinthp & dt) const;
+        bool operator != (const DTinthp & dt) const;
+        bool operator < (const DTinthp & dt) const;
+        bool operator <= (const DTinthp & dt) const;
+        bool operator > (const DTinthp & dt) const;
+        bool operator >= (const DTinthp & dt) const;
     };
 }
 

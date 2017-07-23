@@ -106,40 +106,44 @@ namespace GarbageMayor
     /*
     高精度整数。
     */
-    DTintbig::DTintbig()
+    DTinthp::DTinthp()
     {
-        type = dt_intbig;
+        type = dt_inthp;
         flag = 0;
         dlen = 0;
         alen = 0;
         digit = NULL;
     }
-    DTintbig::DTintbig(const char * vs)
+    DTinthp::DTinthp(const char * vs, int dlen_)
     {
-        type = dt_intbig;
+        type = dt_inthp;
         flag = 0;
         dlen = 0;
         alen = 0;
         digit = NULL;
         
+        if(dlen_ == -1)
+            dlen_ = max_int;
         if(vs[0] == '-')
-            flag = -1, vs++;
-        for(; vs[0] == '0'; vs++);
+            flag = -1, vs++, dlen_--;
+        for(; vs[0] == '0'; vs++, dlen_--);
         if(vs[0] < '0' || vs[0] > '9')
             return;
+        if(dlen_ > DTinthp__max_dlen)
+            dlen_ = DTinthp__max_dlen;
         
         int i = 0;
-        for(; i < DTintbig__max_dlen && '0' <= vs[i] && vs[i] <= '9'; i++);
+        for(; i < dlen_ && '0' <= vs[i] && vs[i] <= '9'; i++);
         dlen = i;
         alen = (dlen + 7) >> 3;
         digit = new int [alen];
         memset(digit, 0, sizeof(int) * alen);
         for(i = 0; i < dlen; i++)
-            digit[i >> 3] += (vs[dlen - 1 - i] - '0') * DTintbig__power_10[i & 7];
+            digit[i >> 3] += (vs[dlen - 1 - i] - '0') * DTinthp__power_10[i & 7];
     }
-    DTintbig::DTintbig(const DTintbig & dt)
+    DTinthp::DTinthp(const DTinthp & dt)
     {
-        type = dt_intbig;
+        type = dt_inthp;
         flag = dt.flag;
         dlen = dt.dlen;
         alen = dt.alen;
@@ -147,7 +151,7 @@ namespace GarbageMayor
         for(int i = 0; i < alen; i++)
             digit[i] = dt.digit[i];
     }
-    DTintbig::~DTintbig()
+    DTinthp::~DTinthp()
     {
         if(digit != NULL)
         {
@@ -156,7 +160,7 @@ namespace GarbageMayor
         }
     }
     
-    void DTintbig::read()
+    void DTinthp::read()
     {
         flag = 0;
         dlen = 0;
@@ -167,25 +171,26 @@ namespace GarbageMayor
             digit = NULL;
         }
         
-        static char buff[DTintbig__max_dlen + 5];
-        char * vs = buff;
-        scanf("%s", vs);
+        static char buffer[DTinthp__max_dlen + 5];
+        char * vs = buffer;
+        scanf(DTinthp__scan_mode, vs);
+        int dlen_ = DTinthp__max_dlen;
         if(vs[0] == '-')
-            flag = -1, vs++;
-        for(; vs[0] == '0'; vs++);
+            flag = -1, vs++, dlen_--;
+        for(; vs[0] == '0'; vs++, dlen_--);
         if(vs[0] < '0' || vs[0] > '9')
             return;
             
         int i = 0;
-        for(; i < DTintbig__max_dlen && '0' <= vs[i] && vs[i] <= '9'; i++);
+        for(; i < dlen_ && '0' <= vs[i] && vs[i] <= '9'; i++);
         dlen = i;
         alen = (dlen + 7) >> 3;
         digit = new int [alen];
         memset(digit, 0, sizeof(int) * alen);
         for(i = 0; i < dlen; i++)
-            digit[i >> 3] += (vs[dlen - 1 - i] - '0') * DTintbig__power_10[i & 7];
+            digit[i >> 3] += (vs[dlen - 1 - i] - '0') * DTinthp__power_10[i & 7];
     }
-    void DTintbig::write()
+    void DTinthp::write()
     {
         if(flag == -1)
             printf("-");
@@ -198,12 +203,12 @@ namespace GarbageMayor
         for(int i = alen - 2; i >= 0; i--)
             printf("%08d", digit[i]);
     }
-    int DTintbig::get_size() const
+    int DTinthp::get_size() const
     {
         return 8 + alen * 4;
     }
     
-    bool DTintbig::operator == (const DTintbig & dt) const
+    bool DTinthp::operator == (const DTinthp & dt) const
     {
         if(flag != dt.flag)
             return false;
@@ -214,7 +219,7 @@ namespace GarbageMayor
                 return false;
         return true;
     }
-    bool DTintbig::operator != (const DTintbig & dt) const
+    bool DTinthp::operator != (const DTinthp & dt) const
     {
         if(flag != dt.flag)
             return true;
@@ -225,7 +230,7 @@ namespace GarbageMayor
                 return true;
         return false;
     }
-    bool DTintbig::operator < (const DTintbig & dt) const
+    bool DTinthp::operator < (const DTinthp & dt) const
     {
         if(flag != dt.flag)
             return flag < dt.flag;
@@ -236,7 +241,7 @@ namespace GarbageMayor
                 return digit[i] < dt.digit[i];
         return false;
     }
-    bool DTintbig::operator <= (const DTintbig & dt) const
+    bool DTinthp::operator <= (const DTinthp & dt) const
     {
         if(flag != dt.flag)
             return flag < dt.flag;
@@ -247,7 +252,7 @@ namespace GarbageMayor
                 return digit[i] < dt.digit[i];
         return true;
     }
-    bool DTintbig::operator > (const DTintbig & dt) const
+    bool DTinthp::operator > (const DTinthp & dt) const
     {
         if(flag != dt.flag)
             return flag > dt.flag;
@@ -258,7 +263,7 @@ namespace GarbageMayor
                 return digit[i] > dt.digit[i];
         return false;
     }
-    bool DTintbig::operator >= (const DTintbig & dt) const
+    bool DTinthp::operator >= (const DTinthp & dt) const
     {
         if(flag != dt.flag)
             return flag > dt.flag;
