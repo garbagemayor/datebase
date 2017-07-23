@@ -1,8 +1,7 @@
 #ifndef DATATIMETEXT_H_
 #define DATATIMETEXT_H_
 
-#include <cstdio>
-#include <cstring>
+#include "DataTypeBase.h"
 
 /*
 各种文本。
@@ -10,120 +9,106 @@
 namespace GarbageMayor
 {
     /*
-    定长短文本。
-    长度255。
+    短文本。
+    长度不超过255字节。
     */
-    class DTtextc2f
-        : public DataTypeBase
+    class DTtext2f
+        : public DTbase
     {
     public:
-        char text[max_length_DTtext8 + 1];
+        int length;
+        char * text;
         
-        DTtextc2f()
-        {
-            memset(text, 0, sizeof(char) * (max_length_DTtext8 + 1));
-        }
-        DTtextc2f(char * const text_)
-        {
-            memset(text, 0, sizeof(char) * (max_length_DTtext8 + 1));
-            for(int i = 0; i < max_length_DTtext8 && text[i] != 0; i ++)
-                text[i] = text_[i];
-        }
-        DTtextc2f(const DTtextc2f & dt)
-        {
-            memset(text, 0, sizeof(char) * (max_length_DTtext8 + 1));
-            for(int i = 0; i < max_length_DTtext8 && dt.text[i] != 0; i ++)
-                text[i] = dt.text[i];
-        }
-        ~DTtextc2f() {} 
+        DTtext2f();
+        DTtext2f(const char * text_, int length_ = -1);
+        DTtext2f(const DTtext2f & dt);
+        ~DTtext2f();
         
     public:
-        inline void read()
-        {
-            memset(text, 0, sizeof(char) * (max_length_DTtext8 + 1));
-            scanf("%s", text);
-            for(int i = 0; i < max_length_DTtext8 && text[i] != 0; i++);
-            text[i] = 0;
-        }
-        inline void read_line()
-        {
-            memset(text, 0, sizeof(char) * (max_length_DTtext8 + 1));
-            scanf("%[^\n]", text)
-            for(int i = 0; i < max_length_DTtext8 && text[i] != 0; i++);
-            text[i] = 0;
-        }
-        inline void write()
-        {
-            printf("%s", text);
-        }
+        void read();
+        void write();
+        int get_size() const;
         
     public:
-        inline bool operator == (const DTtextc2f & dt) const 
-        {
-            for(int i = 0; i < max_length_DTtext8 && text[i] != 0; i++)
-            {
-                if(text[i] != dt.text[i])
-                    return false;
-                if(text[i] == 0)
-                    break;
-            }
-            return true;
-        }
-        inline bool operator != (const DTtextc2f & dt) const 
-        {
-            for(int i = 0; i < max_length_DTtext8 && text[i] != 0; i++)
-            {
-                if(text[i] != dt.text[i])
-                    return true;
-                if(text[i] == 0)
-                    break;
-            }
-            return false;
-        }
-        inline bool operator < (const DTtextc2f & dt) const
-        {
-            for(int i = 0; i < max_length_DTtext8 && text[i] != 0; i++)
-            {
-                if(text[i] != dt.text[i])
-                    return text[i] < dt.text[i];
-                if(text[i] == 0)
-                    break;
-            }
-            return false;
-        }
-        inline bool operator <= (const DTtextc2f & dt) const
-        {
-            for(int i = 0; i < max_length_DTtext8 && text[i] != 0; i++)
-            {
-                if(text[i] != dt.text[i])
-                    return text[i] < dt.text[i];
-                if(text[i] == 0)
-                    break;
-            }
-            return true;
-        }
-        inline bool operator > (const DTtextc2f & dt) const 
-        {
-            for(int i = 0; i < max_length_DTtext8 && text[i] != 0; i++)
-            {
-                if(text[i] != dt.text[i])
-                    return text[i] > dt.text[i];
-                if(text[i] == 0)
-                    break;
-            }
-            return false;
-        }
-        inline bool operator >= (const DTtextc2f & dt) const
-        {
-            for(int i = 0; i < max_length_DTtext8 && text[i] != 0; i++)
-            {
-                if(text[i] != dt.text[i])
-                    return text[i] > dt.text[i];
-                if(text[i] == 0)
-                    break;
-            }
-            return true;
-        }
+        inline int get_length() const { return length; }
+        inline char * get_c_str() const { return text; }
+        
+    public:
+        bool operator == (const DTtext2f & dt) const;
+        bool operator != (const DTtext2f & dt) const;
+        bool operator < (const DTtext2f & dt) const;
+        bool operator <= (const DTtext2f & dt) const;
+        bool operator > (const DTtext2f & dt) const;
+        bool operator >= (const DTtext2f & dt) const;
+    };
+    
+    /*
+    中文本。
+    长度不超过65535字节。
+    */
+    class DTtext4f
+        : public DTbase
+    {
+    public:
+        int length;
+        char * text;
+        
+        DTtext4f();
+        DTtext4f(const char * text_, int length_ = -1);
+        DTtext4f(const DTtext4f & dt);
+        ~DTtext4f();
+        
+    public:
+        void read();
+        void write();
+        int get_size() const;
+        
+    public:
+        inline int get_length() const { return length; }
+        inline char * get_c_str() const { return text; }
+        
+    public:
+        bool operator == (const DTtext4f & dt) const;
+        bool operator != (const DTtext4f & dt) const;
+        bool operator < (const DTtext4f & dt) const;
+        bool operator <= (const DTtext4f & dt) const;
+        bool operator > (const DTtext4f & dt) const;
+        bool operator >= (const DTtext4f & dt) const;
+    };
+    
+    /*
+    长文本。
+    长度不超过1073741823字节。
+    如果从stdin读取，长度不能超过1048575字节。
+    */
+    class DTtext8f
+        : public DTbase
+    {
+    public:
+        int length;
+        char * text;
+        
+        DTtext8f();
+        DTtext8f(const char * text_, int length_ = -1);
+        DTtext8f(const DTtext8f & dt);
+        ~DTtext8f();
+        
+    public:
+        void read();
+        void write();
+        int get_size() const;
+        
+    public:
+        inline int get_length() const { return length; }
+        inline char * get_c_str() const { return text; }
+        
+    public:
+        bool operator == (const DTtext8f & dt) const;
+        bool operator != (const DTtext8f & dt) const;
+        bool operator < (const DTtext8f & dt) const;
+        bool operator <= (const DTtext8f & dt) const;
+        bool operator > (const DTtext8f & dt) const;
+        bool operator >= (const DTtext8f & dt) const;
     };
 }
 
