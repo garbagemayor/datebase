@@ -33,6 +33,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Complaints.log" />
 		<Unit filename="GarbageMayor.h" />
 		<Unit filename="GarbageMayor/Const.h" />
 		<Unit filename="GarbageMayor/DataType.h" />
