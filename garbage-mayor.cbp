@@ -43,6 +43,7 @@
 		<Unit filename="GarbageMayor/DataTypeFloat.h" />
 		<Unit filename="GarbageMayor/DataTypeInt.cpp" />
 		<Unit filename="GarbageMayor/DataTypeInt.h" />
+		<Unit filename="GarbageMayor/DataTypeText.cpp" />
 		<Unit filename="GarbageMayor/DataTypeText.h" />
 		<Unit filename="GarbageMayor/DataTypeTime.cpp" />
 		<Unit filename="GarbageMayor/DataTypeTime.h" />
