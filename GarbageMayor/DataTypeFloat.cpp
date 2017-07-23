@@ -61,7 +61,7 @@ namespace GarbageMayor
         blen = 0;
         digit = NULL;
     }
-    DTfloathp::DTfloathp(const char * vs)
+    DTfloathp::DTfloathp(const char * vs, int slen_)
     {
         type = dt_floathp;
         flag = 0;
@@ -71,17 +71,21 @@ namespace GarbageMayor
         blen = 0;
         digit = NULL;
         
+        if(slen_ == -1)
+            slen_ = max_int;
         if(vs[0] == '-')
-            flag = -1, vs++;
-        for(; vs[0] == '0'; vs++);
+            flag = -1, vs++, slen_--;
+        for(; vs[0] == '0'; vs++, slen_--);
         if((vs[0] < '0' || vs[0] > '9') && vs[0] != '.')
         {
             flag = 0;
             return;
         }
+        if(slen_ > DTfloathp__max_slen)
+            slen_ = DTfloathp__max_slen;
         
         int i = 0;
-        for(; i < DTfloathp__max_slen && '0' <= vs[i] && vs[i] <= '9'; i++);
+        for(; i < slen_ && '0' <= vs[i] && vs[i] <= '9'; i++);
         if(vs[i] != '.')
         {
             dlen = i;
@@ -96,7 +100,7 @@ namespace GarbageMayor
         else
         {
             int j = 0;
-            for(; i + 1 + j < DTfloathp__max_slen && '0' <= vs[i + 1 + j] && vs[i + 1 + j] <= '9'; j++);
+            for(; i + 1 + j < slen_ && '0' <= vs[i + 1 + j] && vs[i + 1 + j] <= '9'; j++);
             for(; j > 0 && vs[i + j] == '0'; j--);
             if(i == 0 && j == 0)
             {
@@ -147,12 +151,13 @@ namespace GarbageMayor
         blen = 0;
         digit = NULL;
         
-        static char buff[DTfloathp__max_slen + 5];
-        char * vs = buff;
-        scanf("%s", vs);
+        static char buffer[DTfloathp__max_slen + 5];
+        char * vs = buffer;
+        scanf(DTfloathp__scan_mode, vs);
+        int slen_ = DTfloathp__max_slen;
         if(vs[0] == '-')
-            flag = -1, vs++;
-        for(; vs[0] == '0'; vs++);
+            flag = -1, vs++, slen_--;
+        for(; vs[0] == '0'; vs++, slen_--);
         if((vs[0] < '0' || vs[0] > '9') && vs[0] != '.')
         {
             flag = 0;
@@ -160,7 +165,7 @@ namespace GarbageMayor
         }
         
         int i = 0;
-        for(; i < DTfloathp__max_slen && '0' <= vs[i] && vs[i] <= '9'; i++);
+        for(; i < slen_ && '0' <= vs[i] && vs[i] <= '9'; i++);
         if(vs[i] != '.')
         {
             dlen = i;
@@ -175,7 +180,7 @@ namespace GarbageMayor
         else
         {
             int j = 0;
-            for(; i + 1 + j < DTfloathp__max_slen && '0' <= vs[i + 1 + j] && vs[i + 1 + j] <= '9'; j++);
+            for(; i + 1 + j < slen_ && '0' <= vs[i + 1 + j] && vs[i + 1 + j] <= '9'; j++);
             for(; j > 0 && vs[i + j] == '0'; j--);
             if(i == 0 && j == 0)
             {

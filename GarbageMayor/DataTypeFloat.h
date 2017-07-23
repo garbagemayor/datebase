@@ -92,7 +92,7 @@ namespace GarbageMayor
         
     public:
         DTfloathp();
-        DTfloathp(const char * vs);
+        DTfloathp(const char * vs, int slen_ = -1);
         DTfloathp(const DTfloathp & dt);
         ~DTfloathp();
     
