@@ -3,18 +3,18 @@
 	<assert.h>
 	"DataTypeBase.h"
 
-1500790825 f:\en_path\database\garbage-mayor\garbagemayor\datatypebase.h
+1500899852 f:\en_path\database\garbage-mayor\garbagemayor\datatypebase.h
 
-1500789901 source:f:\en_path\database\garbage-mayor\garbagemayor\datatypeint.cpp
+1500790810 source:f:\en_path\database\garbage-mayor\garbagemayor\datatypeint.cpp
 	<cstdio>
 	<cstring>
 	"Const.h"
 	"DataTypeInt.h"
 
-1500788801 f:\en_path\database\garbage-mayor\garbagemayor\datatypeint.h
+1500790809 f:\en_path\database\garbage-mayor\garbagemayor\datatypeint.h
 	"DataTypeBase.h"
 
-1500788493 f:\en_path\database\garbage-mayor\garbagemayor\const.h
+1500900863 f:\en_path\database\garbage-mayor\garbagemayor\const.h
 
 1500790004 source:f:\en_path\database\garbage-mayor\garbagemayor\datatypefloat.cpp
 	<cstdio>
@@ -33,4 +33,22 @@
 1500651345 f:\en_path\database\garbage-mayor\garbagemayor\datatypetime.h
 	"DataTypeBase.h"
 	"DataTypeInt.h"
+
+1500901352 source:f:\en_path\database\garbage-mayor\garbagemayor\datatypetext.cpp
+	<cstdio>
+	<cstring>
+	"Const.h"
+	"DataTypeText.h"
+
+1500899751 f:\en_path\database\garbage-mayor\garbagemayor\datatypetext.h
+	"DataTypeBase.h"
+
+1500901464 source:f:\en_path\database\garbage-mayor\garbagemayor\datatypebinary.cpp
+	<cstdio>
+	<cstring>
+	"Const.h"
+	"DataTypeBinary.h"
+
+1500900774 f:\en_path\database\garbage-mayor\garbagemayor\datatypebinary.h
+	"DataTypeBase.h"
 

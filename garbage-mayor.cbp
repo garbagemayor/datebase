@@ -39,6 +39,7 @@
 		<Unit filename="GarbageMayor/DataType.h" />
 		<Unit filename="GarbageMayor/DataTypeBase.cpp" />
 		<Unit filename="GarbageMayor/DataTypeBase.h" />
+		<Unit filename="GarbageMayor/DataTypeBinary.cpp" />
 		<Unit filename="GarbageMayor/DataTypeBinary.h" />
 		<Unit filename="GarbageMayor/DataTypeFloat.cpp" />
 		<Unit filename="GarbageMayor/DataTypeFloat.h" />
