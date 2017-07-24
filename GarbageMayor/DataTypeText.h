@@ -112,5 +112,4 @@ namespace GarbageMayor
     };
 }
 
-
 #endif // DATATIMETEXT_H_

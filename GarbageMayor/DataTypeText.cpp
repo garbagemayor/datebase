@@ -1,6 +1,5 @@
 #include <cstdio>
 #include <cstring>
-#include <assert.h>
 
 #include "Const.h"
 #include "DataTypeText.h"
@@ -262,7 +261,7 @@ namespace GarbageMayor
         
         if(length_ == -1 || length_ > DTtext8f__max_length)
             length_ = DTtext8f__max_length;
-        long long i = 0;
+        int i = 0;
         for(i = 0; i < length_ && text_[i] != 0; i++);
         length = i;
         text = new char [length + 1];
@@ -278,7 +277,7 @@ namespace GarbageMayor
         length = dt.length;
         text = new char [length + 1];
         memset(text, 0, sizeof(char) * (length + 1));
-        for(long long i = 0; i < length; i++)
+        for(int i = 0; i < length; i++)
             text[i] = dt.text[i];
     }
     DTtext8f::~DTtext8f()
@@ -317,7 +316,7 @@ namespace GarbageMayor
     }
     int DTtext8f::get_size() const 
     {
-        return length + 8;
+        return length + 4;
     }
     
     bool DTtext8f::operator == (const DTtext8f & dt) const
