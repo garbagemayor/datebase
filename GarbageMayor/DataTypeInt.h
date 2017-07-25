@@ -25,7 +25,9 @@ namespace GarbageMayor
     
     public:
         void read();
-        void write();
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
         int get_size() const;
         
     public:
@@ -33,12 +35,12 @@ namespace GarbageMayor
         inline void set_value(char value_) { value = value_; }
         
     public:
-        inline bool operator == (const DTint8 & dt) const { return value == dt.value; }
-        inline bool operator != (const DTint8 & dt) const { return value != dt.value; }
-        inline bool operator < (const DTint8 & dt) const { return value < dt.value; }
-        inline bool operator <= (const DTint8 & dt) const { return value <= dt.value; }
-        inline bool operator > (const DTint8 & dt) const { return value > dt.value; }
-        inline bool operator >= (const DTint8 & dt) const { return value >= dt.value; }
+        bool operator == (const DTint8 & dt) const;
+        bool operator != (const DTint8 & dt) const;
+        bool operator < (const DTint8 & dt) const;
+        bool operator <= (const DTint8 & dt) const;
+        bool operator > (const DTint8 & dt) const;
+        bool operator >= (const DTint8 & dt) const;
     };
     
     /*
@@ -58,7 +60,9 @@ namespace GarbageMayor
     
     public:
         void read();
-        void write();
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
         int get_size() const;
         
     public:
@@ -66,12 +70,12 @@ namespace GarbageMayor
         inline void set_value(short value_) { value = value_; }
         
     public:
-        inline bool operator == (const DTint16 & dt) const { return value == dt.value; }
-        inline bool operator != (const DTint16 & dt) const { return value != dt.value; }
-        inline bool operator < (const DTint16 & dt) const { return value < dt.value; }
-        inline bool operator <= (const DTint16 & dt) const { return value <= dt.value; }
-        inline bool operator > (const DTint16 & dt) const { return value > dt.value; }
-        inline bool operator >= (const DTint16 & dt) const { return value >= dt.value; }
+        bool operator == (const DTint16 & dt) const;
+        bool operator != (const DTint16 & dt) const;
+        bool operator < (const DTint16 & dt) const;
+        bool operator <= (const DTint16 & dt) const;
+        bool operator > (const DTint16 & dt) const;
+        bool operator >= (const DTint16 & dt) const;
     };
     
     /*
@@ -91,7 +95,9 @@ namespace GarbageMayor
     
     public:
         void read();
-        void write();
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
         int get_size() const;
         
     public:
@@ -99,12 +105,12 @@ namespace GarbageMayor
         inline void set_value(int value_) { value = value_; }
         
     public:
-        inline bool operator == (const DTint32 & dt) const { return value == dt.value; }
-        inline bool operator != (const DTint32 & dt) const { return value != dt.value; }
-        inline bool operator < (const DTint32 & dt) const { return value < dt.value; }
-        inline bool operator <= (const DTint32 & dt) const { return value <= dt.value; }
-        inline bool operator > (const DTint32 & dt) const { return value > dt.value; }
-        inline bool operator >= (const DTint32 & dt) const { return value >= dt.value; }
+        bool operator == (const DTint32 & dt) const;
+        bool operator != (const DTint32 & dt) const;
+        bool operator < (const DTint32 & dt) const;
+        bool operator <= (const DTint32 & dt) const;
+        bool operator > (const DTint32 & dt) const;
+        bool operator >= (const DTint32 & dt) const;
     };
     
     /*
@@ -124,7 +130,9 @@ namespace GarbageMayor
     
     public:
         void read();
-        void write();
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
         int get_size() const;
         
     public:
@@ -132,12 +140,12 @@ namespace GarbageMayor
         inline void set_value(long long value_) { value = value_; }
         
     public:
-        inline bool operator == (const DTint64 & dt) const { return value == dt.value; }
-        inline bool operator != (const DTint64 & dt) const { return value != dt.value; }
-        inline bool operator < (const DTint64 & dt) const { return value < dt.value; }
-        inline bool operator <= (const DTint64 & dt) const { return value <= dt.value; }
-        inline bool operator > (const DTint64 & dt) const { return value > dt.value; }
-        inline bool operator >= (const DTint64 & dt) const { return value >= dt.value; }
+        bool operator == (const DTint64 & dt) const;
+        bool operator != (const DTint64 & dt) const;
+        bool operator < (const DTint64 & dt) const;
+        bool operator <= (const DTint64 & dt) const;
+        bool operator > (const DTint64 & dt) const;
+        bool operator >= (const DTint64 & dt) const;
     };
     
     /*
@@ -162,7 +170,9 @@ namespace GarbageMayor
     
     public:
         void read();
-        void write();
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
         int get_size() const;
         
     public:

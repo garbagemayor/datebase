@@ -1,6 +1,8 @@
 #ifndef DATATYPEBASE_H
 #define DATATYPEBASE_H
 
+#include <cstdio>
+
 namespace GarbageMayor
 {
     
@@ -9,6 +11,8 @@ namespace GarbageMayor
     */
     enum DTenum
     {
+        dt_null = 0,    //空数据（各种类型没有赋初值的时候都是空数据）
+        
         dt_int8,        //8位整数
         dt_int16,       //16位整数
         dt_int32,       //32位整数
@@ -25,13 +29,13 @@ namespace GarbageMayor
         dt_timeds,      //年月日时分秒yyyymmddhhmmss
         dt_timedsu,     //年月日时分秒毫微yyyymmddhhmmssmmmuuu
         
-        dt_text2f,     //短文本，长度不超过255字节
-        dt_text4f,     //中文本，长度不超过65535字节
-        dt_text8f,     //长文本，长度不超过1073741823字节
+        dt_text2f,      //短文本，长度不超过255字节
+        dt_text4f,      //中文本，长度不超过65535字节
+        dt_text8f,      //长文本，长度不超过1073741823字节
         
-        dt_binary2f,   //短二进制串，长度不超过255字节
-        dt_binary4f,   //中二进制串，长度不超过65535字节
-        dt_binary8f,   //长二进制串，长度不超过1073741823字节
+        dt_binary2f,    //短二进制串，长度不超过255字节
+        dt_binary4f,    //中二进制串，长度不超过65535字节
+        dt_binary8f,    //长二进制串，长度不超过1073741823字节
         
         dt_error = -1,  //没有确定类型时报错
     };
@@ -49,12 +53,15 @@ namespace GarbageMayor
         ~DTbase();
         
     public:
-        void assert_type();
+        bool is_error() const;                              //是否没有确定类型
+        bool is_null() const;                               //是否是空数据
 
     private:
-        virtual void read() = 0;
-        virtual void write() = 0;
-        virtual int get_size() const = 0;
+        virtual void read() = 0;                            //从stdin读取
+        virtual void write() const  = 0;                    //输出到stdout
+        virtual void read_fb(FILE * & file);                //读入二进制文件
+        virtual void write_fb(FILE * & file) const = 0;     //输出二进制文件
+        virtual int get_size() const = 0;                   //类型所占硬盘字节数
     };
 }
 

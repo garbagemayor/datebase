@@ -12,8 +12,12 @@ namespace GarbageMayor
     {
     }
     
-    void DTbase::assert_type()
+    bool DTbase::is_error() const
     {
-        assert(type!=dt_error);
+        return type != dt_error;
+    }
+    bool DTbase::is_null() const
+    {
+        return type != dt_null;
     }
 }
