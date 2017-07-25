@@ -3,7 +3,8 @@
 	<assert.h>
 	"DataTypeBase.h"
 
-1500899852 f:\en_path\database\garbage-mayor\garbagemayor\datatypebase.h
+1500994505 f:\en_path\database\garbage-mayor\garbagemayor\datatypebase.h
+	<cstdio>
 
 1500790810 source:f:\en_path\database\garbage-mayor\garbagemayor\datatypeint.cpp
 	<cstdio>
