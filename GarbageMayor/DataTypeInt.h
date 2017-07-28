@@ -20,7 +20,7 @@ namespace GarbageMayor
     public:
         DTint8();
         DTint8(char value_);
-        DTint8(const DTint8& dt);
+        DTint8(const DTint8 & dt);
         ~DTint8();
     
     public:
@@ -28,11 +28,12 @@ namespace GarbageMayor
         void write() const;
         void read_fb(FILE * & file);
         void write_fb(FILE * & file) const;
-        int get_size() const;
+        int size() const;
+        void clear();
         
     public:
-        inline char get_value() { return value; }
-        inline void set_value(char value_) { value = value_; }
+        char get_value() const;
+        void set_value(char value_);
         
     public:
         bool operator == (const DTint8 & dt) const;
@@ -63,11 +64,12 @@ namespace GarbageMayor
         void write() const;
         void read_fb(FILE * & file);
         void write_fb(FILE * & file) const;
-        int get_size() const;
+        int size() const;
+        void clear();
         
     public:
-        inline short get_value() { return value; }
-        inline void set_value(short value_) { value = value_; }
+        short get_value() const;
+        void set_value(short value_);
         
     public:
         bool operator == (const DTint16 & dt) const;
@@ -98,11 +100,12 @@ namespace GarbageMayor
         void write() const;
         void read_fb(FILE * & file);
         void write_fb(FILE * & file) const;
-        int get_size() const;
+        int size() const;
+        void clear();
         
     public:
-        inline int get_value() { return value; }
-        inline void set_value(int value_) { value = value_; }
+        int get_value() const;
+        void set_value(int value_);
         
     public:
         bool operator == (const DTint32 & dt) const;
@@ -133,11 +136,12 @@ namespace GarbageMayor
         void write() const;
         void read_fb(FILE * & file);
         void write_fb(FILE * & file) const;
-        int get_size() const;
+        int size() const;
+        void clear();
         
     public:
-        inline long long get_value() { return value; }
-        inline void set_value(long long value_) { value = value_; }
+        long long get_value() const;
+        void set_value(long long value_);
         
     public:
         bool operator == (const DTint64 & dt) const;
@@ -173,7 +177,8 @@ namespace GarbageMayor
         void write() const;
         void read_fb(FILE * & file);
         void write_fb(FILE * & file) const;
-        int get_size() const;
+        int size() const;
+        void clear();
         
     public:
         bool operator == (const DTinthp & dt) const;

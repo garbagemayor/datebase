@@ -27,20 +27,23 @@ namespace GarbageMayor
         
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
     
     public:
-        inline short get_year() { return year; }
-        inline void set_year(short year_) { year = year_; }
+        short get_year() const;
+        void set_year(short year_);
         
     public:
-        inline bool operator == (const DTtimey & dt) const { return year == dt.year; }
-        inline bool operator != (const DTtimey & dt) const { return year != dt.year; }
-        inline bool operator < (const DTtimey & dt) const { return year < dt.year; }
-        inline bool operator <= (const DTtimey & dt) const { return year <= dt.year; }
-        inline bool operator > (const DTtimey & dt) const { return year > dt.year; }
-        inline bool operator >= (const DTtimey & dt) const { return year >= dt.year; }
+        bool operator == (const DTtimey & dt) const;
+        bool operator != (const DTtimey & dt) const;
+        bool operator < (const DTtimey & dt) const;
+        bool operator <= (const DTtimey & dt) const;
+        bool operator > (const DTtimey & dt) const;
+        bool operator >= (const DTtimey & dt) const;
     };
     
     /*
@@ -65,13 +68,16 @@ namespace GarbageMayor
         
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
     
     public:
-        inline short get_year() { return year; }
-        inline char get_month() { return month; }
-        inline char get_day() { return day; }
+        short get_year() const;
+        char get_month() const;
+        char get_day() const;
         void set_year(short year_);
         void set_month(char month_);
         void set_day(char day_);
@@ -88,10 +94,9 @@ namespace GarbageMayor
     
     /*
     时分秒hhmmss。
-    时：char，0~24。
+    时：char，0~24，闰秒：24:00:00。
     分：char，0~59。
     秒：char，0~59。
-    闰秒：24:00:00。
     */
     class DTtimes
         : public DTbase
@@ -109,13 +114,16 @@ namespace GarbageMayor
         
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
     
     public:
-        inline char get_hour() { return hour; }
-        inline char get_minute() { return minute; }
-        inline char get_second() { return second; }
+        char get_hour() const;
+        char get_minute() const;
+        char get_second() const;
         void set_hour(char hour_);
         void set_minute(char minute_);
         void set_second(char second_);
@@ -158,16 +166,19 @@ namespace GarbageMayor
         
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
     
     public:
-        inline short get_year() { return year; }
-        inline char get_month() { return month; }
-        inline char get_day() { return day; }
-        inline char get_hour() { return hour; }
-        inline char get_minute() { return minute; }
-        inline char get_second() { return second; }
+        short get_year() const;
+        char get_month() const;
+        char get_day() const;
+        char get_hour() const;
+        char get_minute() const;
+        char get_second() const;
         void set_year(short year_);
         void set_month(char month_);
         void set_day(char day_);
@@ -219,18 +230,21 @@ namespace GarbageMayor
         
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
     
     public:
-        inline short get_year() { return year; }
-        inline char get_month() { return month; }
-        inline char get_day() { return day; }
-        inline char get_hour() { return hour; }
-        inline char get_minute() { return minute; }
-        inline char get_second() { return second; }
-        inline short get_millisecond() { return millisecond; }
-        inline short get_microsecond() { return microsecond; }
+        short get_year() const;
+        char get_month() const;
+        char get_day() const;
+        char get_hour() const;
+        char get_minute() const;
+        char get_second() const;
+        short get_millisecond() const;
+        short get_microsecond() const;
         void set_year(short year_);
         void set_month(char month_);
         void set_day(char day_);
@@ -239,6 +253,7 @@ namespace GarbageMayor
         void set_minute(char minute_);
         void set_second(char second_);
         void set_hms(char hour_, char minute_, char second_);
+        void set_ymdhms(short year_, char month_, char day_, char hour_, char minute_, char second_);
         void set_millisecond(short millisecond_);
         void set_microsecond(short microsecond_);
         void set_ymdhmsmu(short year_, char month_, char day_, char hour_, char minute_, char second_, short millisecond, short microsecond);

@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <cstring>
+#include "assert.h"
 
 #include "Const.h"
 #include "DataTypeFloat.h"
@@ -9,43 +10,213 @@ namespace GarbageMayor
     /*
     32位浮点数。
     */
-    DTfloat32::DTfloat32() : value(0) { type = dt_float32; }
-    DTfloat32::DTfloat32(float value_) : value(value_) { type = dt_float32; }
-    DTfloat32::DTfloat32(const DTfloat32 & dt) : value(dt.value) { type = dt_float32; }
+    DTfloat32::DTfloat32()
+        : value(0)
+    {
+        type = dt_null;
+    }
+    DTfloat32::DTfloat32(float value_)
+        : value(value_)
+    {
+        type = dt_float32;
+    }
+    DTfloat32::DTfloat32(const DTfloat32 & dt)
+        : value(dt.value)
+    {
+        type = dt_float32;
+    }
     DTfloat32::~DTfloat32() {}
     
     void DTfloat32::read()
     {
+        type = dt_float32;
+        
         scanf("%f", &value);
     }
-    void DTfloat32::write()
+    void DTfloat32::write() const
     {
+        if(type == dt_null)
+        {
+            printf("NULL");
+            return;
+        }
         printf("%f", value);
     }
-    int DTfloat32::get_size() const
+    void DTfloat32::read_fb(FILE * & file)
     {
-        return 4; 
+        fread(&type, 1, 1, file);
+        fread(&value, 4, 1, file);
+        assert(type == dt_float32 || type == dt_null);
+        if(type == dt_null)
+            value = 0;
+    }
+    void DTfloat32::write_fb(FILE * & file) const
+    {
+        fwrite(&type, 1, 1, file);
+        fwrite(&value, 4, 1, file);
+    }
+    int DTfloat32::size() const
+    {
+        return 1 + 4; 
+    }
+    void DTfloat32::clear()
+    {
+        type = dt_null;
+        value = 0;
+    }
+    
+    float DTfloat32::get_value() const
+    {
+        assert(type == dt_float32);
+        return value;
+    }
+    void DTfloat32::set_value(float value_)
+    {
+        type = dt_float32;
+        value = value_;
+    }
+    
+    bool DTfloat32::operator == (const DTfloat32 & dt) const 
+    {
+        if(type != dt.type)
+            return false;
+        return value > dt.value - DTfloat32__eps && value < dt.value + DTfloat32__eps;
+    }
+    bool DTfloat32::operator != (const DTfloat32 & dt) const 
+    {
+        if(type != dt.type)
+            return true;
+        return value <= dt.value - DTfloat32__eps || value >= dt.value + DTfloat32__eps;
+    }
+    bool DTfloat32::operator < (const DTfloat32 & dt) const 
+    {
+        if(type != dt.type)
+            return type < dt.type;
+        return value <= dt.value - DTfloat32__eps;
+    }
+    bool DTfloat32::operator <= (const DTfloat32 & dt) const 
+    {
+        if(type != dt.type)
+            return type < dt.type;
+        return value < dt.value + DTfloat32__eps;
+    }
+    bool DTfloat32::operator > (const DTfloat32 & dt) const 
+    {
+        if(type != dt.type)
+            return type > dt.type;
+        return value >= dt.value + DTfloat32__eps;
+    }
+    bool DTfloat32::operator >= (const DTfloat32 & dt) const 
+    {
+        if(type != dt.type)
+            return type > dt.type;
+        return value > dt.value - DTfloat32__eps;
     }
     
     /*
     64位浮点数。
     */
-    DTfloat64::DTfloat64() : value(0) { type = dt_float64; }
-    DTfloat64::DTfloat64(double value_) : value(value_) { type = dt_float64; }
-    DTfloat64::DTfloat64(const DTfloat64 & dt) : value(dt.value) { type = dt_float64; }
+    DTfloat64::DTfloat64()
+        : value(0)
+    {
+        type = dt_null;
+    }
+    DTfloat64::DTfloat64(double value_)
+        : value(value_)
+    {
+        type = dt_float64;
+    }
+    DTfloat64::DTfloat64(const DTfloat64 & dt)
+        : value(dt.value)
+    {
+        type = dt_float64;
+    }
     DTfloat64::~DTfloat64() {}
     
     void DTfloat64::read()
     {
+        type = dt_float64;
+        
         scanf("%lf", &value);
     }
-    void DTfloat64::write()
+    void DTfloat64::write() const
     {
+        if(type == dt_null)
+        {
+            printf("NULL");
+            return;
+        }
         printf("%lf", value);
     }
-    int DTfloat64::get_size() const
+    void DTfloat64::read_fb(FILE * & file)
     {
-        return 8; 
+        fread(&type, 1, 1, file);
+        fread(&value, 8, 1, file);
+        assert(type == dt_float64 || type == dt_null);
+        if(type == dt_null)
+            value = 0;
+    }
+    void DTfloat64::write_fb(FILE * & file) const
+    {
+        fwrite(&type, 1, 1, file);
+        fwrite(&value, 8, 1, file);
+    }
+    int DTfloat64::size() const
+    {
+        return 1 + 8; 
+    }
+    void DTfloat64::clear()
+    {
+        type = dt_null;
+        value = 0;
+    }
+    
+    double DTfloat64::get_value() const
+    {
+        assert(type == dt_float64);
+        return value;
+    }
+    void DTfloat64::set_value(double value_)
+    {
+        type = dt_float64;
+        value = value_;
+    }
+    
+    bool DTfloat64::operator == (const DTfloat64 & dt) const 
+    {
+        if(type != dt.type)
+            return false;
+        return value > dt.value - DTfloat64__eps && value < dt.value + DTfloat64__eps;
+    }
+    bool DTfloat64::operator != (const DTfloat64 & dt) const 
+    {
+        if(type != dt.type)
+            return true;
+        return value <= dt.value - DTfloat64__eps || value >= dt.value + DTfloat64__eps;
+    }
+    bool DTfloat64::operator < (const DTfloat64 & dt) const 
+    {
+        if(type != dt.type)
+            return type < dt.type;
+        return value <= dt.value - DTfloat64__eps;
+    }
+    bool DTfloat64::operator <= (const DTfloat64 & dt) const 
+    {
+        if(type != dt.type)
+            return type < dt.type;
+        return value < dt.value + DTfloat64__eps;
+    }
+    bool DTfloat64::operator > (const DTfloat64 & dt) const 
+    {
+        if(type != dt.type)
+            return type > dt.type;
+        return value >= dt.value + DTfloat64__eps;
+    }
+    bool DTfloat64::operator >= (const DTfloat64 & dt) const 
+    {
+        if(type != dt.type)
+            return type > dt.type;
+        return value > dt.value - DTfloat64__eps;
     }
     
     /*
@@ -53,7 +224,7 @@ namespace GarbageMayor
     */
     DTfloathp::DTfloathp()
     {
-        type = dt_floathp;
+        type = dt_null;
         flag = 0;
         dlen = 0;
         plen = 0;
@@ -95,7 +266,7 @@ namespace GarbageMayor
             digit = new int [alen + blen];
             memset(digit, 0, sizeof(int) * (alen + blen));
             for(i = 0; i < dlen; i++)
-                digit[blen + (i >> 3)] += (vs[dlen - 1 - i] - '0') * DTintbig__power_10[i & 7];
+                digit[blen + (i >> 3)] += (vs[dlen - 1 - i] - '0') * DTinthp__power_10[i & 7];
         }
         else
         {
@@ -114,9 +285,9 @@ namespace GarbageMayor
             digit = new int [alen + blen];
             memset(digit, 0, sizeof(int) * (alen + blen));
             for(j = 0; j < plen; j++)
-                digit[blen - 1 - (j >> 3)] += (vs[dlen + 1 + j] - '0') * DTintbig__power_10[~j & 7];
+                digit[blen - 1 - (j >> 3)] += (vs[dlen + 1 + j] - '0') * DTinthp__power_10[~j & 7];
             for(j = 0; j < dlen; j++)
-                digit[blen + (j >> 3)] += (vs[dlen - 1 - j] - '0') * DTintbig__power_10[j & 7];
+                digit[blen + (j >> 3)] += (vs[dlen - 1 - j] - '0') * DTinthp__power_10[j & 7];
         }
     }
     DTfloathp::DTfloathp(const DTfloathp & dt)
@@ -143,13 +314,8 @@ namespace GarbageMayor
     
     void DTfloathp::read()
     {
+        clear();
         type = dt_floathp;
-        flag = 0;
-        dlen = 0;
-        plen = 0;
-        alen = 0;
-        blen = 0;
-        digit = NULL;
         
         static char buffer[DTfloathp__max_slen + 5];
         char * vs = buffer;
@@ -175,7 +341,7 @@ namespace GarbageMayor
             digit = new int [alen + blen];
             memset(digit, 0, sizeof(int) * (alen + blen));
             for(i = 0; i < dlen; i++)
-                digit[blen + (i >> 3)] += (vs[dlen - 1 - i] - '0') * DTintbig__power_10[i & 7];
+                digit[blen + (i >> 3)] += (vs[dlen - 1 - i] - '0') * DTinthp__power_10[i & 7];
         }
         else
         {
@@ -194,13 +360,18 @@ namespace GarbageMayor
             digit = new int [alen + blen];
             memset(digit, 0, sizeof(int) * (alen + blen));
             for(j = 0; j < plen; j++)
-                digit[blen - 1 - (j >> 3)] += (vs[dlen + 1 + j] - '0') * DTintbig__power_10[~j & 7];
+                digit[blen - 1 - (j >> 3)] += (vs[dlen + 1 + j] - '0') * DTinthp__power_10[~j & 7];
             for(j = 0; j < dlen; j++)
-                digit[blen + (j >> 3)] += (vs[dlen - 1 - j] - '0') * DTintbig__power_10[j & 7];
+                digit[blen + (j >> 3)] += (vs[dlen - 1 - j] - '0') * DTinthp__power_10[j & 7];
         }
     }
-    void DTfloathp::write()
+    void DTfloathp::write() const
     {
+        if(type == dt_null)
+        {
+            printf("NULL");
+            return;
+        }
         if(flag == -1)
             printf("-");
         else if(flag == 0)
@@ -208,24 +379,75 @@ namespace GarbageMayor
             printf("0");
             return;
         }
+        int i = 0;
         if(alen == 0)
             printf("0");
-        int i = 0;
-        for(i = alen + blen - 1; i >= blen; i--)
-            printf("%d", digit[i]);
+        else
+        {
+            printf("%d", digit[alen + blen - 1]);
+            for(i = alen + blen - 2; i >= blen; i--)
+                printf("%08d", digit[i]);
+        }
+        if(blen == 0)
+            return;
         printf(".");
         for(i = blen - 1; i > 0; i--)
-            printf("%d", digit[i]);
+            printf("%08d", digit[i]);
         for(i = digit[0]; i % 10 == 0; i /= 10);
         printf("%d", i);
     }
-    int DTfloathp::get_size() const
+    void DTfloathp::read_fb(FILE * & file)
     {
-        return 12 + (alen + blen) * 4;
+        clear();
+        fread(&type, 1, 1, file);
+        fread(&flag, 1, 1, file);
+        flag -= 1;
+        fread(&dlen, 2, 1, file);
+        alen = (dlen + 7) >> 3;
+        fread(&plen, 2, 1, file);
+        blen = (plen + 7) >> 3;
+        if(type != dt_null)
+        {
+            memset(digit, 0, sizeof(int) * (alen + blen));
+            fread(digit, 4, alen + blen, file);
+        }
+        assert(type == dt_inthp || type == dt_null);
+        if(type == dt_null)
+            clear();
+    }
+    void DTfloathp::write_fb(FILE * & file) const
+    {
+        fwrite(&type, 1, 1, file);
+        int tmp = flag + 1;
+        fwrite(&tmp, 1, 1, file);
+        fwrite(&dlen, 2, 1, file);
+        fwrite(&plen, 2, 1, file);
+        if(type != dt_null)
+            fwrite(digit, 4, alen + blen, file);
+    }
+    int DTfloathp::size() const
+    {
+        return 1 + 1 + 2 + 2 + (alen + blen) * 4;
+    }
+    void DTfloathp::clear()
+    {
+        type = dt_null;
+        flag = 0;
+        dlen = 0;
+        plen = 0;
+        alen = 0;
+        blen = 0;
+        if(digit != NULL)
+        {
+            delete [] digit;
+            digit = NULL;
+        }
     }
     
     bool DTfloathp::operator == (const DTfloathp & dt) const
     {
+        if(type != dt.type)
+            return false;
         if(flag != dt.flag)
             return false;
         if(dlen != dt.dlen)
@@ -239,6 +461,8 @@ namespace GarbageMayor
     }
     bool DTfloathp::operator != (const DTfloathp & dt) const
     {
+        if(type != dt.type)
+            return true;
         if(flag != dt.flag)
             return true;
         if(dlen != dt.dlen)
@@ -252,6 +476,8 @@ namespace GarbageMayor
     }
     bool DTfloathp::operator < (const DTfloathp & dt) const
     {
+        if(type != dt.type)
+            return type < dt.type;
         if(flag != dt.flag)
             return flag < dt.flag;
         if(dlen != dt.dlen)
@@ -265,6 +491,8 @@ namespace GarbageMayor
     }
     bool DTfloathp::operator <= (const DTfloathp & dt) const
     {
+        if(type != dt.type)
+            return type < dt.type;
         if(flag != dt.flag)
             return flag < dt.flag;
         if(dlen != dt.dlen)
@@ -278,6 +506,8 @@ namespace GarbageMayor
     }
     bool DTfloathp::operator > (const DTfloathp & dt) const
     {
+        if(type != dt.type)
+            return type > dt.type;
         if(flag != dt.flag)
             return flag > dt.flag;
         if(dlen != dt.dlen)
@@ -291,6 +521,8 @@ namespace GarbageMayor
     }
     bool DTfloathp::operator >= (const DTfloathp & dt) const
     {
+        if(type != dt.type)
+            return type > dt.type;
         if(flag != dt.flag)
             return flag > dt.flag;
         if(dlen != dt.dlen)

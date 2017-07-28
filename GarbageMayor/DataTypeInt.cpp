@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <cstring>
+#include <assert.h>
 
 #include "Const.h"
 #include "DataTypeInt.h"
@@ -47,15 +48,34 @@ namespace GarbageMayor
     {
         fread(&type, 1, 1, file);
         fread(&value, 1, 1, file);
+        assert(type == dt_int8 || type == dt_null);
+        if(type == dt_null)
+            value = 0;
     }
     void DTint8::write_fb(FILE * & file) const
     {
         fwrite(&type, 1, 1, file);
         fwrite(&value, 1, 1, file);
     }
-    int DTint8::get_size() const
+    int DTint8::size() const
     {
         return 1 + 1;
+    }
+    void DTint8::clear()
+    {
+        type = dt_null;
+        value = 0;
+    }
+    
+    char DTint8::get_value() const
+    {
+        assert(type == dt_int8);
+        return value;
+    }
+    void DTint8::set_value(char value_)
+    {
+        type = dt_int8;
+        value = value_;
     }
     
     bool DTint8::operator == (const DTint8 & dt) const 
@@ -137,52 +157,71 @@ namespace GarbageMayor
     {
         fread(&type, 1, 1, file);
         fread(&value, 2, 1, file);
+        assert(type == dt_int16 || type == dt_null);
+        if(type == dt_null)
+            value = 0;
     }
     void DTint16::write_fb(FILE * & file) const
     {
         fwrite(&type, 1, 1, file);
         fwrite(&value, 2, 1, file);
     }
-    int DTint16::get_size() const
+    int DTint16::size() const
     {
         return 1 + 2;
+    }
+    void DTint16::clear()
+    {
+        type = dt_null;
+        value = 0;
+    }
+    
+    short DTint16::get_value() const
+    {
+        assert(type == dt_int16);
+        return value;
+    }
+    void DTint16::set_value(short value_)
+    {
+        type = dt_int16;
+        value = value_;
     }
     
     bool DTint16::operator == (const DTint16 & dt) const 
     {
         if(type != dt.type)
             return false;
-        return value == dt.value; 
+        return value == dt.value;
     }
     bool DTint16::operator != (const DTint16 & dt) const 
     {
         if(type != dt.type)
             return true;
-        return value != dt.value; 
+        return value != dt.value;
     }
     bool DTint16::operator < (const DTint16 & dt) const 
     {
         if(type != dt.type)
             return type < dt.type;
-        return value < dt.value; 
+        return value < dt.value;
     }
     bool DTint16::operator <= (const DTint16 & dt) const 
     {
         if(type != dt.type)
             return type < dt.type;
-        return value <= dt.value; 
+        return value <= dt.value;
     }
     bool DTint16::operator > (const DTint16 & dt) const 
     {
         if(type != dt.type)
             return type > dt.type;
-        return value > dt.value; 
+        return value > dt.value;
     }
     bool DTint16::operator >= (const DTint16 & dt) const 
     {
         if(type != dt.type)
             return type > dt.type;
-        return value >= dt.value; 
+        return value >= dt.value;
     }
     
     /*
@@ -224,52 +263,71 @@ namespace GarbageMayor
     {
         fread(&type, 1, 1, file);
         fread(&value, 4, 1, file);
+        assert(type == dt_int32 || type == dt_null);
+        if(type == dt_null)
+            value = 0;
     }
     void DTint32::write_fb(FILE * & file) const
     {
         fwrite(&type, 1, 1, file);
         fwrite(&value, 4, 1, file);
     }
-    int DTint32::get_size() const
+    int DTint32::size() const
     {
         return 1 + 4;
+    }
+    void DTint32::clear()
+    {
+        type = dt_null;
+        value = 0;
+    }
+    
+    int DTint32::get_value() const
+    {
+        assert(type == dt_int32);
+        return value;
+    }
+    void DTint32::set_value(int value_)
+    {
+        type = dt_int32;
+        value = value_;
     }
     
     bool DTint32::operator == (const DTint32 & dt) const 
     {
         if(type != dt.type)
             return false;
-        return value == dt.value; 
+        return value == dt.value;
     }
     bool DTint32::operator != (const DTint32 & dt) const 
     {
         if(type != dt.type)
             return true;
-        return value != dt.value; 
+        return value != dt.value;
     }
     bool DTint32::operator < (const DTint32 & dt) const 
     {
         if(type != dt.type)
             return type < dt.type;
-        return value < dt.value; 
+        return value < dt.value;
     }
     bool DTint32::operator <= (const DTint32 & dt) const 
     {
         if(type != dt.type)
             return type < dt.type;
-        return value <= dt.value; 
+        return value <= dt.value;
     }
     bool DTint32::operator > (const DTint32 & dt) const 
     {
         if(type != dt.type)
             return type > dt.type;
-        return value > dt.value; 
+        return value > dt.value;
     }
     bool DTint32::operator >= (const DTint32 & dt) const 
     {
         if(type != dt.type)
             return type > dt.type;
-        return value >= dt.value; 
+        return value >= dt.value;
     }
     
     /*
@@ -319,52 +377,71 @@ namespace GarbageMayor
     {
         fread(&type, 1, 1, file);
         fread(&value, 8, 1, file);
+        assert(type == dt_int64 || type == dt_null);
+        if(type == dt_null)
+            value = 0;
     }
     void DTint64::write_fb(FILE * & file) const
     {
         fwrite(&type, 1, 1, file);
         fwrite(&value, 8, 1, file);
     }
-    int DTint64::get_size() const
+    int DTint64::size() const
     {
         return 1 + 8;
+    }
+    void DTint64::clear()
+    {
+        type = dt_null;
+        value = 0;
+    }
+    
+    long long DTint64::get_value() const
+    {
+        assert(type == dt_int64);
+        return value;
+    }
+    void DTint64::set_value(long long value_)
+    {
+        type = dt_int64;
+        value = value_;
     }
     
     bool DTint64::operator == (const DTint64 & dt) const 
     {
         if(type != dt.type)
             return false;
-        return value == dt.value; 
+        return value == dt.value;
     }
     bool DTint64::operator != (const DTint64 & dt) const 
     {
         if(type != dt.type)
             return true;
-        return value != dt.value; 
+        return value != dt.value;
     }
     bool DTint64::operator < (const DTint64 & dt) const 
     {
         if(type != dt.type)
             return type < dt.type;
-        return value < dt.value; 
+        return value < dt.value;
     }
     bool DTint64::operator <= (const DTint64 & dt) const 
     {
         if(type != dt.type)
             return type < dt.type;
-        return value <= dt.value; 
+        return value <= dt.value;
     }
     bool DTint64::operator > (const DTint64 & dt) const 
     {
         if(type != dt.type)
             return type > dt.type;
-        return value > dt.value; 
+        return value > dt.value;
     }
     bool DTint64::operator >= (const DTint64 & dt) const 
     {
         if(type != dt.type)
             return type > dt.type;
-        return value >= dt.value; 
+        return value >= dt.value;
     }
     
     /*
@@ -426,16 +503,8 @@ namespace GarbageMayor
     
     void DTinthp::read()
     {
+        clear();
         type = dt_inthp;
-        
-        flag = 0;
-        dlen = 0;
-        alen = 0;
-        if(digit != NULL)
-        {
-            delete [] digit;
-            digit = NULL;
-        }
         
         static char buffer[DTinthp__max_dlen + 5];
         char * vs = buffer;
@@ -445,7 +514,10 @@ namespace GarbageMayor
             flag = -1, vs++, dlen_--;
         for(; vs[0] == '0'; vs++, dlen_--);
         if(vs[0] < '0' || vs[0] > '9')
+        {
+            flag = 0;
             return;
+        }
             
         int i = 0;
         for(; i < dlen_ && '0' <= vs[i] && vs[i] <= '9'; i++);
@@ -476,14 +548,21 @@ namespace GarbageMayor
     }
     void DTinthp::read_fb(FILE * & file)
     {
+        clear();
         fread(&type, 1, 1, file);
         fread(&flag, 1, 1, file);
         flag -= 1;
         fread(&dlen, 2, 1, file);
         alen = (dlen + 7) >> 3;
         digit = new int [alen];
-        memset(digit, 0, sizeof(int) * alen);
-        fread(digit, 4, alen, file);
+        if(type != dt_null)
+        {
+            memset(digit, 0, sizeof(int) * alen);
+            fread(digit, 4, alen, file);
+        }
+        assert(type == dt_inthp || type == dt_null);
+        if(type == dt_null)
+            clear();
     }
     void DTinthp::write_fb(FILE * & file) const
     {
@@ -491,11 +570,24 @@ namespace GarbageMayor
         int tmp = flag + 1;
         fwrite(&tmp, 1, 1, file);
         fwrite(&dlen, 2, 1, file);
-        fwrite(&digit, 4, alen, file);
+        if(type != dt_null)
+            fwrite(digit, 4, alen, file);
     }
-    int DTinthp::get_size() const
+    int DTinthp::size() const
     {
         return 1 + 1 + 2 + alen * 4;
+    }
+    void DTinthp::clear()
+    {
+        type = dt_null;
+        flag = 0;
+        dlen = 0;
+        alen = 0;
+        if(digit != NULL)
+        {
+            delete [] digit;
+            digit = NULL;
+        }
     }
     
     bool DTinthp::operator == (const DTinthp & dt) const

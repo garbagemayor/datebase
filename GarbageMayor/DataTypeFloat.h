@@ -25,20 +25,23 @@ namespace GarbageMayor
     
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
         
     public:
-        inline float get_value() { return value; }
-        inline void set_value(float value_) { value = value_; }
+        float get_value() const;
+        void set_value(float value_);
         
     public:
-        inline bool operator == (const DTfloat32 & dt) const { return value > dt.value - DTfloat32__eps && value < dt.value + DTfloat32__eps; }
-        inline bool operator != (const DTfloat32 & dt) const { return value <= dt.value - DTfloat32__eps || value >= dt.value + DTfloat32__eps; }
-        inline bool operator < (const DTfloat32 & dt) const { return value < dt.value - DTfloat32__eps; }
-        inline bool operator <= (const DTfloat32 & dt) const { return value < dt.value + DTfloat32__eps; }
-        inline bool operator > (const DTfloat32 & dt) const { return value > dt.value + DTfloat32__eps; }
-        inline bool operator >= (const DTfloat32 & dt) const { return value > dt.value - DTfloat32__eps; }
+        bool operator == (const DTfloat32 & dt) const;
+        bool operator != (const DTfloat32 & dt) const;
+        bool operator < (const DTfloat32 & dt) const;
+        bool operator <= (const DTfloat32 & dt) const;
+        bool operator > (const DTfloat32 & dt) const;
+        bool operator >= (const DTfloat32 & dt) const;
     };
     
     /*
@@ -58,20 +61,23 @@ namespace GarbageMayor
     
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
         
     public:
-        inline double get_value() { return value; }
-        inline void set_value(double value_) { value = value_; }
+        double get_value() const;
+        void set_value(double value_);
         
     public:
-        inline bool operator == (const DTfloat64 & dt) const { return value > dt.value - DTfloat64__eps && value < dt.value + DTfloat64__eps; }
-        inline bool operator != (const DTfloat64 & dt) const { return value <= dt.value - DTfloat64__eps || value >= dt.value + DTfloat64__eps; }
-        inline bool operator < (const DTfloat64 & dt) const { return value < dt.value - DTfloat64__eps; }
-        inline bool operator <= (const DTfloat64 & dt) const { return value < dt.value + DTfloat64__eps; }
-        inline bool operator > (const DTfloat64 & dt) const { return value > dt.value + DTfloat64__eps; }
-        inline bool operator >= (const DTfloat64 & dt) const { return value > dt.value - DTfloat64__eps; }
+        bool operator == (const DTfloat64 & dt) const;
+        bool operator != (const DTfloat64 & dt) const;
+        bool operator < (const DTfloat64 & dt) const;
+        bool operator <= (const DTfloat64 & dt) const;
+        bool operator > (const DTfloat64 & dt) const;
+        bool operator >= (const DTfloat64 & dt) const;
     };
     
     /*
@@ -98,8 +104,11 @@ namespace GarbageMayor
     
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
         
     public:
         bool operator == (const DTfloathp & dt) const;
