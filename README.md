@@ -1,4 +1,4 @@
-#garbage mayor
-database demo project Êı¾İ¿âÑİÊ¾ÏîÄ¿
+# garbage mayor
+database demo project æ•°æ®åº“æ¼”ç¤ºé¡¹ç›®
 
-Complanints.log ÓÃÀ´ÍÂ²ÛºÍ¼ÇÂ¼½ø¶È£¬ÄêÇáÈË¿ªĞÄ¾ÍºÃ¡£
+Complanints.log ç”¨æ¥åæ§½å’Œè®°å½•è¿›åº¦ï¼Œå¹´è½»äººå¼€å¿ƒå°±å¥½ã€‚
