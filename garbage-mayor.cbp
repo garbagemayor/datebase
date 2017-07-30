@@ -51,7 +51,7 @@
 		<Unit filename="GarbageMayor/DataTypeTime.h" />
 		<Unit filename="GarbageMayor/Table.cpp" />
 		<Unit filename="GarbageMayor/Table.h" />
-		<Unit filename="GarbageMayor/TableHeader.h" />
+		<Unit filename="GarbageMayor/TableFormat.h" />
 		<Unit filename="MainForTest.cpp" />
 		<Unit filename="SQLParser/SQLParser.cpp" />
 		<Unit filename="SQLParser/SQLParser.h" />
