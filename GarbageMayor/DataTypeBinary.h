@@ -27,12 +27,15 @@ namespace GarbageMayor
         
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
         
     public:
-        inline int get_length() const { return length; }
-        inline unsigned char * get_data_pointer() const { return data; }
+        int get_length() const;
+        unsigned char * get_data_pointer() const;
         
     public:
         bool operator == (const DTbinary2f & dt) const;
@@ -62,12 +65,15 @@ namespace GarbageMayor
         
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
         
     public:
-        inline int get_length() const { return length; }
-        inline unsigned char * get_data_pointer() const { return data; }
+        int get_length() const;
+        unsigned char * get_data_pointer() const;
         
     public:
         bool operator == (const DTbinary4f & dt) const;
@@ -97,12 +103,15 @@ namespace GarbageMayor
         
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
         
     public:
-        inline int get_length() const { return length; }
-        inline unsigned char * get_data_pointer() const { return data; }
+        int get_length() const;
+        unsigned char * get_data_pointer() const;
         
     public:
         bool operator == (const DTbinary8f & dt) const;

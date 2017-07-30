@@ -26,12 +26,15 @@ namespace GarbageMayor
         
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
         
     public:
-        inline int get_length() const { return length; }
-        inline char * get_c_str() const { return text; }
+        int get_length() const;
+        char * get_c_str() const;
         
     public:
         bool operator == (const DTtext2f & dt) const;
@@ -60,12 +63,15 @@ namespace GarbageMayor
         
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
         
     public:
-        inline int get_length() const { return length; }
-        inline char * get_c_str() const { return text; }
+        int get_length() const;
+        char * get_c_str() const;
         
     public:
         bool operator == (const DTtext4f & dt) const;
@@ -95,12 +101,15 @@ namespace GarbageMayor
         
     public:
         void read();
-        void write();
-        int get_size() const;
+        void write() const;
+        void read_fb(FILE * & file);
+        void write_fb(FILE * & file) const;
+        int size() const;
+        void clear();
         
     public:
-        inline int get_length() const { return length; }
-        inline char * get_c_str() const { return text; }
+        int get_length() const;
+        char * get_c_str() const;
         
     public:
         bool operator == (const DTtext8f & dt) const;
