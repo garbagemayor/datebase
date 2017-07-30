@@ -53,6 +53,10 @@
 		<Unit filename="GarbageMayor/Table.h" />
 		<Unit filename="GarbageMayor/TableHeader.h" />
 		<Unit filename="MainForTest.cpp" />
+		<Unit filename="SQLParser/SQLParser.cpp" />
+		<Unit filename="SQLParser/SQLParser.h" />
+		<Unit filename="SQLParser/SQLParserResult.cpp" />
+		<Unit filename="SQLParser/SQLParserResult.h" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />
