@@ -39,7 +39,13 @@ namespace GarbageMayor
     //长文本从缓冲区读取的最大长度。
     const int DTtext8f__max_buffer = 1048575;
     //长文本的scanf读取模式。
-    const char * const DTtext8f__scan_mode = "%1048575[\x1-\xff]";;
+    const char * const DTtext8f__scan_mode = "%1048575[\x1-\xff]";
+    
+    //列名称最大长度。
+    const int TFcell__max_length = 255;
+    
+    
+    
     
     
     
